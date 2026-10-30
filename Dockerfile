@@ -1,5 +1,6 @@
 
-FROM maven:3.9.9-eclipse-temurin-25 AS build
+# Build stage
+FROM maven:3.10.0-eclipse-temurin-25 AS build
 
 WORKDIR /app
 
@@ -8,7 +9,8 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:25-jre
+# Run stage
+FROM eclipse-temurin:25
 
 WORKDIR /app
 
